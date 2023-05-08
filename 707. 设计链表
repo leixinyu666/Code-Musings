@@ -1,1 +1,90 @@
+class MyLinkedList {
+public:
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+    MyLinkedList() {
+        dummyhead=new ListNode(0);
+        size=0;
+    }
+    
+    int get(int index) {
+        if(index<0||index>size-1){
+            return -1;
+        }
+        int tmp=index;
+        ListNode* cur=dummyhead;
+        while(tmp!=0){
+            cur=cur->next;
+            tmp--;
+        }
+        return cur->next->val;
+    }
+    
+    void addAtHead(int val) {
+        ListNode* newNode=new ListNode(val);
+        newNode->next=dummyhead->next;
+        dummyhead->next=newNode;
+        size++;
+    }
+    
+    void addAtTail(int val) {
+        ListNode* newNode=new ListNode(val);
+        newNode->next=NULL;
+        int tmp=size;
+        ListNode* cur=dummyhead;
+        while(tmp!=0){
+            cur=cur->next;
+            tmp--;
+        }
+        cur->next=newNode;
+        size++;
+    }
+    
+    void addAtIndex(int index, int val) {
+        if(index>size||index<0){
+            return;
+        }
+        ListNode* newNode=new ListNode(val);
+        int tmp=index;
+        ListNode* cur=dummyhead;
+        while(tmp!=0){
+            cur=cur->next;
+            tmp--;
+        }
+        newNode->next=cur->next;
+        cur->next=newNode;
+        size++;
+    }
+    
+    void deleteAtIndex(int index) {
+        if(index>size-1||index<0){
+            return;
+        }
+        int tmp=index;
+        ListNode* cur=dummyhead;
+        while(tmp!=0){
+            cur=cur->next;
+            tmp--;
+        }
+        cur->next=cur->next->next;
+        size--;
+    }
+private:
+    ListNode* dummyhead;
+    int size;
+};
 
+/**
+ * Your MyLinkedList object will be instantiated and called as such:
+ * MyLinkedList* obj = new MyLinkedList();
+ * int param_1 = obj->get(index);
+ * obj->addAtHead(val);
+ * obj->addAtTail(val);
+ * obj->addAtIndex(index,val);
+ * obj->deleteAtIndex(index);
+ */
