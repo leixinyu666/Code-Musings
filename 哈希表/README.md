@@ -8,3 +8,5 @@ unordered_set:去重的集合。
 unordered_map:去重的键值对，<key,value>。
 本题中为<值，下标>
 对于每个nums中的元素，在unordered_map里寻找auto iter=map.find(target-nums[i]):有则输出两个下标（iter->second和i），无则把此元素加入unordered_map，map[nums[i]]=i
+# 454.四数相加2
+分两组，AB双for把结果都放入unordered_map，second是出现的次数，CD双for对于每个值找map.find(target-c-d)！=map.end()则count+=map[target-c-d]
