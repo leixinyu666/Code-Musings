@@ -6,6 +6,7 @@ ListNode* dummyhead=new ListNode(0);
 dummyhead->next=head;
 
 ListNode* cur=dummyhead;
+
 再对cur操作
 # 707. 设计链表
 虚拟头节点，插入，删除的步骤
