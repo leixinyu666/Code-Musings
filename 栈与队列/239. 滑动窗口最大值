@@ -1,0 +1,42 @@
+class Solution {
+public:
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        //单调队列，双端
+        //push的元素比队尾元素大，则把队尾元素删掉直到遇到比他更大或者相等的再入队
+        //pop的元素如果等于对头元素，则把队头元素删掉
+        myqueue qu;
+        vector<int> result(nums.size()-k+1,0);
+        int i=0;
+        for(;i<k;i++){
+            qu.push(nums[i]);
+        }
+        //result.push_back(qu.front());
+        result[0]=qu.front();
+        for(;i<nums.size();i++){
+            qu.push(nums[i]);
+            qu.pop(nums[i-k]);
+            //result.push_back(qu.front());
+            result[i-k+1]=qu.front();
+        }
+        return result;
+    }
+
+    struct myqueue{
+        void push(int x){
+            while(!d.empty()&&d.back()<x){
+                d.pop_back();
+            }
+            d.push_back(x);
+        }
+        void pop(int x){
+            if(!d.empty()&&d.front()==x){
+                d.pop_front();
+            }
+        }
+        int front(){
+            return d.front();
+        }
+    private:
+        deque<int> d;
+    };
+};
