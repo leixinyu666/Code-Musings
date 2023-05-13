@@ -25,15 +25,9 @@ public:
     }
     
     int peek() {
-        if(!s1.empty()){
-            return s1.top();
-        }
-        while(!s2.empty()){
-            int tmp=s2.top();
-            s2.pop();
-            s1.push(tmp);
-        }
-        return s1.top();
+        int result=this->pop();
+        s1.push(result);
+        return result;
     }
     
     bool empty() {
