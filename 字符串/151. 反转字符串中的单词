@@ -1,0 +1,38 @@
+class Solution {
+public:
+    string reverseWords(string s) {
+        //去掉冗余空格
+        int fast=0;
+        int slow=0;
+        while(fast<s.size()&&s[fast]==' '){
+            fast++;
+        }
+        for(;fast<s.size();fast++){
+            if(fast>1&&s[fast]==' '&&s[fast-1]==' '){
+                continue;
+            }
+            s[slow]=s[fast];
+            slow++;
+        }
+        if(slow>1&&s[slow-1]==' '){
+            s.resize(slow-1);
+        }
+        else{
+            s.resize(slow);
+        }
+        //反转字符串
+        reverse(s.begin(),s.end());
+        //每个单词反转
+        slow=0;
+        fast=0;
+        for(;fast<s.size();fast++){
+            if(s[fast]!=' '){
+                continue;
+            }
+            reverse(s.begin()+slow,s.begin()+fast);
+            slow=fast+1;
+        }
+        reverse(s.begin()+slow,s.end());
+        return s;
+    }
+};
