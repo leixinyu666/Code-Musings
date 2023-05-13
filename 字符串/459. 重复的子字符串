@@ -1,0 +1,14 @@
+class Solution {
+public:
+    bool repeatedSubstringPattern(string s) {
+        string tmp=s+s;
+        tmp.erase(tmp.begin());
+        tmp.erase(tmp.end()-1);
+        if(tmp.find(s)!=-1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+};
