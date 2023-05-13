@@ -23,4 +23,11 @@ pop的元素如果等于对头元素，则把队头元素删掉
 
 注意：vector如果不事先声明大小不能直接用arr[i]=x索引，只能arr.push_back(x)
 # 347.k个高频元素
-# 
+# 42.接雨水
+重点：sum+=min(leftmaxheight[i],rightmaxheight[i])-height[i];
+
+求leftmaxheight和rightmaxheight（除开两个端点）：
+
+leftmaxheight[i]=max(height[i],leftmaxheight[i-1]);
+
+rightmaxheight[i]=max(height[i],rightmaxheight[i+1]);
