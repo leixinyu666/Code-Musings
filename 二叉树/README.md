@@ -42,3 +42,11 @@ TreeNode* op(vector<int>& preorder,int pre_b,int pre_e,vector<int>& inorder,int 
 拿到前序或者后序的端点找到val并创建root，如果size为1则返回root
   
 划分中序数组找到root点，分为左右两半，再递归的写出root的左右孩子
+# 617.合并两棵二叉树
+讨论空不空，有空则取代，都不空则new一个新的
+# 700.二叉树中的搜索
+普通递归
+# 98.验证二叉搜索树
+bool op(TreeNode* root,long long mi,long long ma)
+  
+这个节点不能比mi小不能比ma大，符合要求则return op(root->left,mi,root->val)&&op(root->right,root->val,ma)
