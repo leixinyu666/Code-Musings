@@ -20,14 +20,13 @@ public:
     void op(TreeNode* root,vector<int> arr,int sum,int targetSum,vector<vector<int>>& result){
         if(root!=NULL){
             sum+=root->val;
+            arr.push_back(root->val);
             if(root->left==NULL&&root->right==NULL){
                 if(sum==targetSum){
-                    arr.push_back(root->val);
                     result.push_back(arr);
                 }
             }
             else{
-                arr.push_back(root->val);
                 op(root->left,arr,sum,targetSum,result);
                 op(root->right,arr,sum,targetSum,result);
             }
