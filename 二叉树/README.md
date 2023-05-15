@@ -34,3 +34,11 @@ op函数遇到空节点后返回false
 void op(TreeNode* root,vector<int> arr,int sum,int targetSum,vector<vector<int>>& result)
 
 op函数递归遇到非空节点后，sum+=val,val加入arr,若是树叶则判断相等则把arr加入resukt，不等则return，若不是树叶，则递归到两个子节点
+# 105.106.从前序与中序或者中序与后序遍历序列构造二叉树
+TreeNode* op(vector<int>& preorder,int pre_b,int pre_e,vector<int>& inorder,int in_b,int in_e) 
+
+若数组size为0则返回NULL
+  
+拿到前序或者后序的端点找到val并创建root，如果size为1则返回root
+  
+划分中序数组找到root点，分为左右两半，再递归的写出root的左右孩子
