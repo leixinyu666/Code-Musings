@@ -20,3 +20,5 @@ op函数对最大深度的op修改，-1代表不平衡，若左和右有-1则自
 void op(TreeNode* root,string path,vector<string>& result)
 
 op函数递归遇到非空节点后，若是树叶则path挂上val就push_back到result，若不是树叶，则把path挂上val和->递归到两个子节点
+# 112.路径总和
+ 
