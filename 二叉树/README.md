@@ -50,3 +50,5 @@ TreeNode* op(vector<int>& preorder,int pre_b,int pre_e,vector<int>& inorder,int 
 bool op(TreeNode* root,long long mi,long long ma)
   
 这个节点不能比mi小不能比ma大，符合要求则return op(root->left,mi,root->val)&&op(root->right,root->val,ma)
+
+注意：用long long数据类型，最小最大的初始值为LONG_MIN,LONG_MAX
