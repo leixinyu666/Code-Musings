@@ -48,6 +48,8 @@ TreeNode* op(vector<int>& preorder,int pre_b,int pre_e,vector<int>& inorder,int 
 普通递归
 # 98.验证二叉搜索树
 先中序输出到数组里再看是否单增
+
+也可以用递归：
   
 bool op(TreeNode* root,long long mi,long long ma)
   
