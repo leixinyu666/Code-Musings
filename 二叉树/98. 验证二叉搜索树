@@ -12,15 +12,37 @@
 class Solution {
 public:
     bool isValidBST(TreeNode* root) {
-        return op(root,LONG_MIN,LONG_MAX);
+        //return op(root,LONG_MIN,LONG_MAX);
+        vector<int> result;
+        op(root,result);
+        int tmp=result[0];
+        for(int i=1;i<result.size();i++){
+            if(result[i]<=tmp){
+                return false;
+            }
+            tmp=result[i];
+        }
+        return true;
     }
-    bool op(TreeNode* root,long long mi,long long ma){
+    void op(TreeNode* root,vector<int>& result){
         if(root==NULL){
-            return true;
+            return;
         }
-        if(root->val<=mi||root->val>=ma){
-            return false;
+        if(root->left!=NULL){
+            op(root->left,result);
         }
-        return op(root->left,mi,root->val)&&op(root->right,root->val,ma);
+        result.push_back(root->val);
+        if(root->right!=NULL){
+            op(root->right,result);
+        }
     }
+    // bool op(TreeNode* root,long long mi,long long ma){
+    //     if(root==NULL){
+    //         return true;
+    //     }
+    //     if(root->val<=mi||root->val>=ma){
+    //         return false;
+    //     }
+    //     return op(root->left,mi,root->val)&&op(root->right,root->val,ma);
+    // }
 };
